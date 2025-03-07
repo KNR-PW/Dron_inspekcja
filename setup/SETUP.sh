@@ -48,3 +48,8 @@ sudo docker run -it \
 #    inspekcja:humple-pi5-v1: Specifies the name of the Docker image to use when creating the container.
 #    bash: Specifies the command to run inside the container. In this case, it starts a Bash shell.
 
+print_color blue "Remote connection"
+
+sudo apt install rpi-connect
+
+rpi-connect on
