@@ -11,26 +11,25 @@ print_color() {
 
 print_color blue "update, upgrade"
 
-sudo apt update
-sudo apt upgrade
+sudo apt update -y
+sudo apt upgrade -y
 
 print_color blue "instalowanie nvim, neofetch, htop"
 
-sudo apt install neovim
+sudo apt install -y neovim
 
-sudo apt install neofetch
+sudo apt install -y neofetch
 
-sudo apt install htop
-
+sudo apt install -y htop
 
 
 print_color blue "instalowanie dockera"
 
 curl -sSL https://get.docker.com | sh
 
-print_color blue "Tworzenie kontenera stacha z ROSem"
+print_color blue "Tworzenie kontenera ROSem"
 
-docker build . -t Inspekcja:humple-pi5-v1
+sudo docker build . -t inspekcja:humple-pi5-v1
 
 sudo docker run -it \
     --name=ros2_humble \
@@ -48,8 +47,12 @@ sudo docker run -it \
 #    inspekcja:humple-pi5-v1: Specifies the name of the Docker image to use when creating the container.
 #    bash: Specifies the command to run inside the container. In this case, it starts a Bash shell.
 
-print_color blue "Remote connection"
+print_color blue "Remote connection install"
 
 sudo apt install rpi-connect
 
 rpi-connect on
+
+print_color blue "Zalogowanie się do zdalego połączenia - rpi connect"
+
+rpi-connect rpi-connect signin 
